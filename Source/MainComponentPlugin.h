@@ -1,7 +1,7 @@
 
 #pragma once
 #include <JuceHeader.h>
-#include "MainComponent.h"
+#include "Source/MainComponent.h"
 
 
 
