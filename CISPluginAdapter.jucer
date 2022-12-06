@@ -5,7 +5,7 @@
               projectType="audioplug" pluginAUIsSandboxSafe="1" pluginManufacturer="JUCE"
               pluginFormats="buildVST3,buildAU,buildStandalone,buildAUv3" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn,pluginProducesMidiOut,pluginEditorRequiresKeys"
               useAppConfig="0" addUsingNamespaceToJuceHeader="1" id="gkEFhw"
-              jucerFormatVersion="1" headerPath="C:\AAU\SMC7\CIS_plugin_adapter\CIS">
+              jucerFormatVersion="1" headerPath="C:\AAU\SMC7\CIS_plugin_adapter\CIS&#10;C:\AAU\SMC7\CIS_plugin_adapter\CIS\libgammatone\include">
   <MAINGROUP id="kzSaZ6" name="PluginAdapter">
     <GROUP id="{CAB542AF-F02F-1E58-D20F-4D54C41FE911}" name="Source">
       <FILE id="XScUVY" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>

@@ -7,7 +7,7 @@
 
 //==============================================================================
 /** As the name suggest, this class does the actual audio processing. */
-class MainComponentPlugin  : public juce::AudioProcessor, MainComponent
+class MainComponentPlugin  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
@@ -35,17 +35,17 @@ public:
 
     void prepareToPlay (double newSampleRate, int samplesPerBlock) override
     {
-        MainComponent::prepareToPlay(samplesPerBlock,newSampleRate);
+        main.prepareToPlay(samplesPerBlock,newSampleRate);
     }
 
     void releaseResources() override
     {
-        MainComponent::releaseResources();
+        main.releaseResources();
     }
 
     void reset() override
     {
-        MainComponent::reset();
+        main.reset();
     }
 
     //==============================================================================
@@ -53,14 +53,14 @@ public:
     {
         for (auto channel = 0; channel < buffer.getNumChannels(); ++channel)
         {
-            visualizeInput(buffer.getReadPointer(channel), buffer.getNumSamples());
+            main.visualizeInput(buffer.getReadPointer(channel), buffer.getNumSamples());
         }
 
-        engine->processBlockSimulation((juce::dsp::AudioBlock<float>(buffer)));
+        main.engine->processBlockSimulation((juce::dsp::AudioBlock<float>(buffer)));
 
         for (auto channel = 0; channel < buffer.getNumChannels(); ++channel)
         {
-            visualizeOutput(buffer.getReadPointer(channel), buffer.getNumSamples());
+            main.visualizeOutput(buffer.getReadPointer(channel), buffer.getNumSamples());
         }
     }
 
@@ -85,7 +85,7 @@ public:
     bool hasEditor() const override                                   { return true; }
 
     juce::AudioProcessorEditor* createEditor() override { 
-        return editor;
+        return main.editor;
     }
 
     //==============================================================================
@@ -147,6 +147,8 @@ private:
         return BusesProperties().withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
                                 .withOutput ("Output", juce::AudioChannelSet::stereo(), true);
     }
+
+    MainComponent main;
 
     //juce::CriticalSection trackPropertiesLock;
     //juce::TrackProperties trackProperties;
